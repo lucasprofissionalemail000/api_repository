@@ -11,8 +11,8 @@ public class ProdutoDAO {
     public void salvar(Produto produto) {
 
         String sql = """
-            INSERT INTO produtos (produto, preco, link, descricao)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO produtos (produto, preco, link, descricao ,imagem_url)
+            VALUES (?, ?, ?, ? ,?)
         """;
 
         try (
@@ -37,7 +37,7 @@ public class ProdutoDAO {
         List<Produto> produtos = new ArrayList<>();
 
         String sql = """
-            SELECT id, produto, preco, link, descricao
+            SELECT id, produto, preco, link, descricao ,imagem_url
             FROM produtos
         """;
 
@@ -53,7 +53,8 @@ public class ProdutoDAO {
                         rs.getString("produto"),
                         rs.getDouble("preco"),
                         rs.getString("link"),
-                        rs.getString("descricao")
+                        rs.getString("descricao"),
+                        rs.getString("img")
                 );
                 produtos.add(produto);
             }

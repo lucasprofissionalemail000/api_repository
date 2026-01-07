@@ -53,7 +53,7 @@ public class MainConsole {
         String img = console.nextLine();
 
 
-        Produto produto = new Produto(nome , preco , link , descricao);
+        Produto produto = new Produto(nome , preco , link , descricao,img);
         ProdutoDAO produtoDAO = new ProdutoDAO();
 
         try {
