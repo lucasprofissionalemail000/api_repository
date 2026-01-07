@@ -23,6 +23,7 @@ public class ProdutoDAO {
             stmt.setDouble(2, produto.preco());
             stmt.setString(3, produto.link());
             stmt.setString(4, produto.descricao());
+            stmt.setString(5, produto.imagem_url());
 
             stmt.executeUpdate();
 
