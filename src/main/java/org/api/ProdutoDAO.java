@@ -54,7 +54,7 @@ public class ProdutoDAO {
                         rs.getDouble("preco"),
                         rs.getString("link"),
                         rs.getString("descricao"),
-                        rs.getString("img")
+                        rs.getString("imagem_url")
                 );
                 produtos.add(produto);
             }
