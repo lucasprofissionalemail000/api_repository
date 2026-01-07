@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class ProdutoDAO {
-
     public void salvar(Produto produto) {
 
         String sql = """
@@ -65,4 +64,21 @@ public class ProdutoDAO {
 
         return produtos;
     }
+    public void excluir(Long id) {
+
+        String sql = "DELETE FROM produtos WHERE id = ?";
+
+        try (
+                var conexao = Conexao.connection();
+                var stmt = conexao.prepareStatement(sql)
+        ) {
+
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao excluir produto", e);
+        }
+    }
+
 }
