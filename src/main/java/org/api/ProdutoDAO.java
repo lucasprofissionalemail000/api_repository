@@ -1,9 +1,11 @@
 package org.api;
 
+import org.springframework.stereotype.Repository;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class ProdutoDAO {
 
     public void salvar(Produto produto) {
