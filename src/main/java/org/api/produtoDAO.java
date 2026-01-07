@@ -1,0 +1,49 @@
+package org.api;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+public class produtoDAO {
+    public void salvar(Produto produto) throws Exception {
+        var sql = "insert into produtos (produto , preco,link ,descricao) values (?, ? ,?,?)" ;
+
+        try (var conexao = Conexao.connection();
+        var stmt = conexao.prepareStatement(sql)){
+            stmt.setString(1,produto.produto());
+            stmt.setDouble(2,produto.preco());
+            stmt.setString(3,produto.link());
+            stmt.setString(4,produto.descricao());
+            stmt.executeUpdate();
+
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+    }
+    public List<Produto> buscarTodos() {
+        List<Produto> produtos = new ArrayList<>();
+
+        var sql = "select id ,produto, preco, link, descricao from produtos";
+
+        try (var conexao = Conexao.connection();
+             var stmt = conexao.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Produto produto = new Produto(
+                        rs.getLong("id"),
+                        rs.getString("produto"),
+                        rs.getDouble("preco"),
+                        rs.getString("link"),
+                        rs.getString("descricao")
+                );
+                produtos.add(produto);
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return produtos;
+    }
+}
