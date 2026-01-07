@@ -13,12 +13,14 @@ public class Conexao {
 
         if (url == null) {
             throw new RuntimeException("problemas na url");
-        } else if ( user == null ) {
-            throw  new RuntimeException("problemas no usuario");
-        } else if (pass == null) {
-            throw  new RuntimeException("problemas na senha");
-
         }
+        if (user == null) {
+            throw new RuntimeException("problemas no usuario");
+        }
+        if (pass == null) {
+            throw new RuntimeException("problemas na senha");
+        }
+
         return DriverManager.getConnection(url, user, pass);
     }
 }
