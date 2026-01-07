@@ -54,7 +54,7 @@ public class MainConsole {
 
 
         Produto produto = new Produto(nome , preco , link , descricao);
-        produtoDAO produtoDAO = new produtoDAO();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
 
         try {
             produtoDAO.salvar(produto);

@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class produtoDAO {
+public class ProdutoDAO {
 
     public void salvar(Produto produto) {
 
